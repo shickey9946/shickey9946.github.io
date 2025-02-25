@@ -462,10 +462,10 @@
             <div class="quote">"I'm not lazy, I'm in energy-saving mode." - Mr. Bear</div>
             <div class="quote">"I'm not a teddy bear, I'm an untamed spirit with a fuzzy exterior." - Mr. Bear</div>
             <div class="controls quote-controls">
-                <button onclick="prevQuote()"><i class="fas fa-chevron-left"></i></button>
-                <button onclick="nextQuote()"><i class="fas fa-chevron-right"></i></button>
+                    <button onclick="prevQuote()"><i class="fas fa-chevron-left"></i></button>
+                    <button onclick="manualNextQuote()"><i class="fas fa-chevron-right"></i></button>
             </div>
-        </div>
+        </div>    
 
         <div class="gallery">
             <div class="gallery-item">
@@ -581,31 +581,51 @@
         }
         
         // Quotes carousel
-        let currentQuoteIndex = 0;
-        const quotes = document.querySelectorAll('.quote');
-        
-        function showQuote(index) {
-            quotes.forEach(quote => quote.classList.remove('active'));
+            let currentQuoteIndex = 0;
+            const quotes = document.querySelectorAll('.quote');
+            let quoteInterval; // Store the interval reference
             
-            if (index < 0) {
-                currentQuoteIndex = quotes.length - 1;
-            } else if (index >= quotes.length) {
-                currentQuoteIndex = 0;
-            } else {
-                currentQuoteIndex = index;
+            function resetQuoteTimer() {
+                // Clear existing interval
+                clearInterval(quoteInterval);
+                // Start a new interval
+                quoteInterval = setInterval(nextQuote, 8000);
             }
             
-            quotes[currentQuoteIndex].classList.add('active');
-        }
-        
-        function nextQuote() {
-            showQuote(currentQuoteIndex + 1);
-        }
-        
-        function prevQuote() {
-            showQuote(currentQuoteIndex - 1);
-        }
-        
+            function showQuote(index) {
+                quotes.forEach(quote => quote.classList.remove('active'));
+                
+                if (index < 0) {
+                    currentQuoteIndex = quotes.length - 1;
+                } else if (index >= quotes.length) {
+                    currentQuoteIndex = 0;
+                } else {
+                    currentQuoteIndex = index;
+                }
+                
+                quotes[currentQuoteIndex].classList.add('active');
+            }
+            
+            function nextQuote() {
+                showQuote(currentQuoteIndex + 1);
+            }
+            
+            function prevQuote() {
+                showQuote(currentQuoteIndex - 1);
+                resetQuoteTimer(); // Reset the timer when user clicks previous
+            }
+            
+            // Modified nextQuote for manual navigation
+            function manualNextQuote() {
+                nextQuote();
+                resetQuoteTimer(); // Reset the timer when user clicks next
+            }
+            
+            // Initialize the interval when the page loads
+            document.addEventListener('DOMContentLoaded', function() {
+                resetQuoteTimer();
+            });
+       
         // Auto rotate quotes
         setInterval(nextQuote, 8000);
         
