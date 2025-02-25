@@ -39,6 +39,18 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
         
+        /* Mobile navigation */
+        .hamburger-menu {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            margin: 0 auto;
+        }
+        
         nav ul {
             display: flex;
             justify-content: center;
@@ -397,10 +409,32 @@
         
         /* Responsive design */
         @media (max-width: 768px) {
+            .hamburger-menu {
+                display: block;
+            }
+            
             nav ul {
                 flex-direction: column;
                 align-items: center;
                 gap: 10px;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.5s ease-out;
+            }
+            
+            nav ul.show {
+                max-height: 300px; /* Adjust this value as needed */
+            }
+            
+            nav li {
+                width: 100%;
+                text-align: center;
+                margin: 5px 0;
+            }
+            
+            nav a {
+                width: 80%;
+                padding: 8px 0;
             }
             
             .gallery {
@@ -415,7 +449,10 @@
 </head>
 <body>
     <nav>
-        <ul>
+        <button class="hamburger-menu" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </button>
+        <ul id="mobile-menu">
             <li><a href="#" class="active"><i class="fas fa-home"></i> Home</a></li>
             <li><a href="#"><i class="fas fa-book"></i> Bear Blog</a></li>
             <li><a href="#"><i class="fas fa-images"></i> Beary Pics</a></li>
@@ -577,6 +614,21 @@
             } else {
                 icon.classList.remove('fa-sun');
                 icon.classList.add('fa-moon');
+            }
+        }
+        
+        // Mobile menu toggle
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('show');
+            
+            const menuButton = document.querySelector('.hamburger-menu i');
+            if (menu.classList.contains('show')) {
+                menuButton.classList.remove('fa-bars');
+                menuButton.classList.add('fa-times');
+            } else {
+                menuButton.classList.remove('fa-times');
+                menuButton.classList.add('fa-bars');
             }
         }
         
