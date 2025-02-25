@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mr. Bear's Official Fan Page 🐻</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #cc9900;
+            --secondary: #ffd699;
+            --background: #fff5e6;
+            --text: #4a3500;
+            --accent: #ff9966;
+        }
+        
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background);
+            color: var(--text);
+            transition: background-color 0.5s;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: var(--primary);
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            flex-wrap: wrap;
+        }
+        
+        nav li {
+            margin: 0 15px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: background-color 0.3s;
+            display: inline-block;
+        }
+        
+        nav a:hover {
+            background-color: rgba(255,255,255,0.2);
+            transform: scale(1.05);
+        }
+        
+        nav a.active {
+            background-color: white;
+            color: var(--primary);
+        }
+        
+        /* Header */
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: var(--secondary);
+            border-radius: 15px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        header h3 {
+            font-style: italic;
+            margin-top: 0;
+        }
+        
+        .paw-print {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: rgba(204, 153, 0, 0.2);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            transform: rotate(45deg);
+        }
+        
+        /* Sections */
+        .bear-facts {
+            background-color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .bear-facts:hover {
+            transform: translateY(-5px);
+        }
+        
+        .bear-facts h2 {
+            border-bottom: 2px dashed var(--primary);
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .bear-facts h2 i {
+            margin-right: 10px;
+            color: var(--primary);
+        }
+        
+        /* Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border: 3px solid var(--primary);
+            border-radius: 10px;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0,0,0,0.7);
+            color: white;
+            padding: 10px;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        /* Mood Toggle */
+        .mood-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            z-index: 100;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+        
+        .mood-toggle:hover {
+            transform: scale(1.1);
+        }
+        
+        .mood-toggle i {
+            font-size: 1.5rem;
+        }
+        
+        /* Dark mode styles */
+        body.dark-mode {
+            --background: #2c2c2c;
+            --secondary: #4d4d4d;
+            --text: #f0f0f0;
+        }
+        
+        body.dark-mode .bear-facts {
+            background-color: #3d3d3d;
+        }
+        
+        /* New feature: Honey Jar Counter */
+        .honey-counter {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 30px 0;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .honey-jar {
+            width: 60px;
+            height: 80px;
+            background-color: #ffc04d;
+            border-radius: 5px 5px 20px 20px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+        
+        .honey-jar:hover {
+            transform: translateY(-5px);
+        }
+        
+        .honey-jar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 15px;
+            background-color: #cc9900;
+            border-radius: 5px 5px 0 0;
+        }
+        
+        .honey-level {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 70%;
+            background-color: #ffcc00;
+            transition: height 0.5s;
+        }
+        
+        .honey-counter-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        /* Quotes Carousel */
+        .quotes-carousel {
+            background-color: var(--secondary);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 30px 0;
+            position: relative;
+        }
+        
+        .quote {
+            display: none;
+            padding: 20px;
+            font-style: italic;
+        }
+        
+        .quote.active {
+            display: block;
+            animation: fadeIn 1s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .quote-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 10px;
+        }
+        
+        .quote-controls button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        
+        .quote-controls button:hover {
+            background-color: #aa8000;
+            transform: scale(1.1);
+        }
+        
+        /* Newsletter Signup */
+        .newsletter {
+            background-color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .newsletter form {
+            display: flex;
+            max-width: 500px;
+            margin: 20px auto;
+            gap: 10px;
+        }
+        
+        .newsletter input {
+            flex: 1;
+            padding: 10px 15px;
+            border: 2px solid var(--secondary);
+            border-radius: 20px;
+            font-family: inherit;
+        }
+        
+        .newsletter button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        
+        .newsletter button:hover {
+            background-color: #aa8000;
+            transform: scale(1.05);
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background-color: var(--secondary);
+            border-radius: 15px 15px 0 0;
+            color: var(--text);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .social-links a {
+            background-color: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: #aa8000;
+            transform: scale(1.1);
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+            
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            
+            .newsletter form {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#" class="active"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="#"><i class="fas fa-book"></i> Bear Blog</a></li>
+            <li><a href="#"><i class="fas fa-images"></i> Beary Pics</a></li>
+            <li><a href="#"><i class="fas fa-calendar-alt"></i> Events</a></li>
+            <li><a href="#"><i class="fas fa-shopping-bag"></i> Bear Shop</a></li>
+            <li><a href="#"><i class="fas fa-envelope"></i> Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <header>
+            <h1>🐻 Official Mr. Bear Website 🐾</h1>
+            <h3>"The Freakiest Bear in Somerville"</h3>
+            <!-- Decorative paw prints -->
+            <div id="paw-prints-container"></div>
+        </header>
+        
+        <div class="honey-counter">
+            <p class="honey-counter-text">Love-O-Meter: </p>
+            <div class="honey-jar" onclick="increaseHoney(0)">
+                <div class="honey-level" id="honey-0" style="height: 10%"></div>
+            </div>
+            <div class="honey-jar" onclick="increaseHoney(1)">
+                <div class="honey-level" id="honey-1" style="height: 20%"></div>
+            </div>
+            <div class="honey-jar" onclick="increaseHoney(2)">
+                <div class="honey-level" id="honey-2" style="height: 30%"></div>
+            </div>
+            <div class="honey-jar" onclick="increaseHoney(3)">
+                <div class="honey-level" id="honey-3" style="height: 40%"></div>
+            </div>
+            <div class="honey-jar" onclick="increaseHoney(4)">
+                <div class="honey-level" id="honey-4" style="height: 50%"></div>
+            </div>
+        </div>
+
+        <div class="quotes-carousel">
+            <div class="quote active">"I don't always drink beer, but when I do, it's Josh and Coors." - Mr. Bear</div>
+            <div class="quote">"Behind every successful bear is a trail of stolen bread butts." - Mr. Bear</div>
+            <div class="quote">"To nap, or not to nap... that is never the question." - Mr. Bear</div>
+            <div class="quote">"Life is short, lick the spoon." - Mr. Bear</div>
+            <div class="quote">"Keep your friends close and your honey jars closer." - Mr. Bear</div>
+            <div class="quote">"Chris Hansen can catch these paws." - Mr. Bear</div>
+            <div class="quote">"I'm not lazy, I'm in energy-saving mode." - Mr. Bear</div>
+            <div class="quote">"I'm not a teddy bear, I'm an untamed spirit with a fuzzy exterior." - Mr. Bear</div>
+            <div class="controls quote-controls">
+                <button onclick="prevQuote()"><i class="fas fa-chevron-left"></i></button>
+                <button onclick="nextQuote()"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="https://shickey9946.github.io/mr_bear_coding.jpg" alt="Mr. Bear coding">
+                <div class="gallery-caption">Debugging like a boss</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://shickey9946.github.io/mr_bear_chilling.jpg" alt="Mr. Bear sippin on Josh and Coors">
+                <div class="gallery-caption">Friday night vibes</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://shickey9946.github.io/mr_bear_sniffing.jpg" alt="Mr. Bear smelling his favorite deodorant">
+                <div class="gallery-caption">That fresh bear scent</div>
+            </div>
+            <div class="gallery-item">
+                <img src="/api/placeholder/400/400" alt="Mr. Bear at the beach">
+                <div class="gallery-caption">Beach day shenanigans</div>
+            </div>
+            <div class="gallery-item">
+                <img src="/api/placeholder/400/400" alt="Mr. Bear dressed up">
+                <div class="gallery-caption">Formal bear-tie event</div>
+            </div>
+            <div class="gallery-item">
+                <img src="/api/placeholder/400/400" alt="Mr. Bear hiding">
+                <div class="gallery-caption">Stealth mode activated</div>
+            </div>
+        </div>
+
+        <div class="bear-facts">
+            <h2><i class="fas fa-paw"></i> Bearography</h2>
+            <ul>
+                <li>🧸 Full Name: Sir Bearrington Fluffbottom III</li>
+                <li>📅 Age: 1 Year Old (but 43 in bear years)</li>
+                <li>⚖️ Weight: Approximately 2.5 extra large jars of honey</li>
+                <li>🎨 Color: Distinguished coffee-with-extra-cream</li>
+                <li>🍯 Favorite Snack: Bread butts</li>
+                <li>😡 Nemesis: Chris Hansen</li>
+                <li>🏠 Residence: The Plushiest Corner of Somerville</li>
+                <li>🎓 Education: Bearvard University, majoring in Napology</li>
+                <li>💪 Hidden Talent: Can open cookie jars with just his mind</li>
+            </ul>
+        </div>
+
+        <div class="bear-facts">
+            <h2><i class="fas fa-calendar-day"></i> Daily Activities</h2>
+            <p>Mr. Bear's busy schedule includes:</p>
+            <ul>
+                <li>🛌 Professional napping (9:00 AM - 11:30 AM)</li>
+                <li>🥐 Bread butt inspection (11:45 AM - 12:15 PM)</li>
+                <li>🪂 Extreme couch cushion diving (1:30 PM - 2:15 PM)</li>
+                <li>🕵️ Investigating suspicious cookie jars (3:00 PM - 4:30 PM)</li>
+                <li>🧘 Meditation and contemplation (5:00 PM - 5:05 PM)</li>
+                <li>🍻 Happy hour with the boys (6:00 PM - 8:00 PM)</li>
+                <li>👅 Going on hot dates (9:00 PM - whenever)</li>
+            </ul>
+        </div>
+        
+        <div class="bear-facts">
+            <h2><i class="fas fa-star"></i> Achievements & Awards</h2>
+            <ul>
+                <li>🏆 "Most Likely to Steal Your Girl" - Teddy Bear Convention 2024</li>
+                <li>🥇 1st Place - Somerville Cuddle Olympics</li>
+                <li>🎖️ Distinguished Service Award - Bedtime Story Companion</li>
+                <li>🏅 Honorary Degree in Snack Detection</li>
+                <li>⭐ Five-Star Rating on BearBnB</li>
+            </ul>
+        </div>
+
+        <div class="newsletter">
+            <h2>📫 Join the Bear-y Exclusive Newsletter!</h2>
+            <p>Get the latest updates, exclusive bear tips, and secret adventures straight to your inbox!</p>
+            <form onsubmit="event.preventDefault(); subscribeNewsletter();">
+                <input type="email" placeholder="Your email address" required>
+                <button type="submit"><i class="fas fa-paw"></i> Subscribe</button>
+            </form>
+            <p id="newsletter-message"></p>
+        </div>
+
+        <footer>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-twitch"></i></a>
+            </div>
+            <p>© 2025 Mr. Bear's Fan Club - All cuddles reserved</p>
+            <p><small>Disclaimer: Actual beariness may exceed displayed levels</small></p>
+            <p><small>No real bears were harmed in the making of this website.</small></p>
+        </footer>
+    </div>
+
+    <div class="mood-toggle" onclick="toggleDarkMode()">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <script>
+        // Paw prints animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const header = document.querySelector('header');
+            const pawPrintsContainer = document.getElementById('paw-prints-container');
+            
+            for (let i = 0; i < 15; i++) {
+                const pawPrint = document.createElement('div');
+                pawPrint.classList.add('paw-print');
+                pawPrint.style.left = `${Math.random() * 100}%`;
+                pawPrint.style.top = `${Math.random() * 100}%`;
+                pawPrint.style.opacity = Math.random() * 0.5 + 0.2;
+                pawPrintsContainer.appendChild(pawPrint);
+            }
+        });
+        
+        // Dark mode toggle
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const icon = document.querySelector('.mood-toggle i');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        }
+        
+        // Quotes carousel
+        let currentQuoteIndex = 0;
+        const quotes = document.querySelectorAll('.quote');
+        
+        function showQuote(index) {
+            quotes.forEach(quote => quote.classList.remove('active'));
+            
+            if (index < 0) {
+                currentQuoteIndex = quotes.length - 1;
+            } else if (index >= quotes.length) {
+                currentQuoteIndex = 0;
+            } else {
+                currentQuoteIndex = index;
+            }
+            
+            quotes[currentQuoteIndex].classList.add('active');
+        }
+        
+        function nextQuote() {
+            showQuote(currentQuoteIndex + 1);
+        }
+        
+        function prevQuote() {
+            showQuote(currentQuoteIndex - 1);
+        }
+        
+        // Auto rotate quotes
+        setInterval(nextQuote, 8000);
+        
+        // Honey jars interaction
+        function increaseHoney(jarIndex) {
+            const honeyLevel = document.getElementById(`honey-${jarIndex}`);
+            let currentHeight = parseInt(honeyLevel.style.height);
+            
+            if (currentHeight < 100) {
+                currentHeight += 10;
+                honeyLevel.style.height = `${currentHeight}%`;
+                
+                if (currentHeight === 100) {
+                    honeyLevel.style.backgroundColor = '#ffaa00';
+                    const jar = honeyLevel.parentElement;
+                    jar.style.animation = 'shake 0.5s';
+                    setTimeout(() => {
+                        jar.style.animation = '';
+                    }, 500);
+                }
+            }
+        }
+        
+        // Newsletter subscription
+        function subscribeNewsletter() {
+            const messageElement = document.getElementById('newsletter-message');
+            messageElement.textContent = "Thanks for subscribing to Mr. Bear's adventures!";
+            messageElement.style.color = "green";
+            
+            setTimeout(() => {
+                document.querySelector('.newsletter form').reset();
+                messageElement.textContent = "";
+            }, 3000);
+        }
+        
+        // Define shake animation
+        const style = document.createElement('style');
+        style.textContent = `
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+        }`;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
