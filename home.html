@@ -678,6 +678,117 @@
                         jar.style.animation = '';
                     }, 500);
                 }
+                
+                // Check if all jars are filled to 100%
+                checkAllJarsFilled();
+            }
+        }
+
+        // New function to check if all jars are filled
+        function checkAllJarsFilled() {
+            const totalJars = 5;
+            let filledJars = 0;
+            
+            for (let i = 0; i < totalJars; i++) {
+                const honeyLevel = document.getElementById(`honey-${i}`);
+                if (parseInt(honeyLevel.style.height) === 100) {
+                    filledJars++;
+                }
+            }
+            
+            // If all jars are filled, show the secret bear gif
+            if (filledJars === totalJars) {
+                showSecretBearGif();
+            }
+        }
+        
+        // New function to display the secret bear gif
+        function showSecretBearGif() {
+            // Check if the secret container already exists to prevent duplicates
+            if (!document.getElementById('secret-bear-container')) {
+                // Create container for the secret gif
+                const secretContainer = document.createElement('div');
+                secretContainer.id = 'secret-bear-container';
+                secretContainer.style.position = 'fixed';
+                secretContainer.style.top = '0';
+                secretContainer.style.left = '0';
+                secretContainer.style.width = '100%';
+                secretContainer.style.height = '100%';
+                secretContainer.style.backgroundColor = 'rgba(0,0,0,0.8)';
+                secretContainer.style.display = 'flex';
+                secretContainer.style.flexDirection = 'column';
+                secretContainer.style.justifyContent = 'center';
+                secretContainer.style.alignItems = 'center';
+                secretContainer.style.zIndex = '1000';
+                secretContainer.style.animation = 'fadeIn 0.5s';
+                
+                // Create congratulations message
+                const message = document.createElement('h1');
+                message.textContent = '🎉 You Found the Secret Bear Rave! 🎉';
+                message.style.color = 'var(--primary)';
+                message.style.fontFamily = 'Comic Sans MS, sans-serif';
+                message.style.marginBottom = '20px';
+                message.style.textAlign = 'center';
+                
+                // Create the gif element
+                const gifImage = document.createElement('img');
+                gifImage.src = 'bear_rave.gif';
+                gifImage.alt = 'Dancing Bear';
+                gifImage.style.maxWidth = '80%';
+                gifImage.style.maxHeight = '60vh';
+                gifImage.style.borderRadius = '15px';
+                gifImage.style.border = '5px solid var(--primary)';
+                
+                // Create close button
+                const closeButton = document.createElement('button');
+                closeButton.textContent = 'Close';
+                closeButton.style.marginTop = '20px';
+                closeButton.style.padding = '10px 20px';
+                closeButton.style.backgroundColor = 'var(--primary)';
+                closeButton.style.color = 'white';
+                closeButton.style.border = 'none';
+                closeButton.style.borderRadius = '20px';
+                closeButton.style.fontFamily = 'Comic Sans MS, sans-serif';
+                closeButton.style.fontWeight = 'bold';
+                closeButton.style.cursor = 'pointer';
+                closeButton.addEventListener('click', () => {
+                    document.body.removeChild(secretContainer);
+                });
+                
+                // Add all elements to the container
+                secretContainer.appendChild(message);
+                secretContainer.appendChild(gifImage);
+                secretContainer.appendChild(closeButton);
+                
+                // Add container to the body
+                document.body.appendChild(secretContainer);
+                
+                // Play celebration sound (optional)
+                const audio = new Audio('https://bigsoundbank.com/UPLOAD/mp3/1482.mp3');
+                audio.volume = 0.3;
+                audio.play().catch(e => console.log('Audio autoplay was prevented'));
+                
+                // Add the fadeIn animation style if it doesn't exist
+                if (!document.getElementById('secret-bear-animations')) {
+                    const style = document.createElement('style');
+                    style.id = 'secret-bear-animations';
+                    style.textContent = `
+                        @keyframes fadeIn {
+                            from { opacity: 0; }
+                            to { opacity: 1; }
+                        }
+                    `;
+                    document.head.appendChild(style);
+                }
+            }
+        }
+        
+        // Reset function (optional) - could be used to add a "Reset" button
+        function resetHoneyJars() {
+            for (let i = 0; i < 5; i++) {
+                const honeyLevel = document.getElementById(`honey-${i}`);
+                honeyLevel.style.height = `${10 * (i + 1)}%`;
+                honeyLevel.style.backgroundColor = '#ffcc00';
             }
         }
         
