@@ -663,26 +663,26 @@
         
         // Honey jars interaction
         function increaseHoney(jarIndex) {
-            const honeyLevel = document.getElementById(`honey-${jarIndex}`);
-            let currentHeight = parseInt(honeyLevel.style.height);
-            
-            if (currentHeight < 100) {
-                currentHeight += 10;
-                honeyLevel.style.height = `${currentHeight}%`;
-                
-                if (currentHeight === 100) {
-                    honeyLevel.style.backgroundColor = '#ffaa00';
-                    const jar = honeyLevel.parentElement;
-                    jar.style.animation = 'shake 0.5s';
-                    setTimeout(() => {
-                        jar.style.animation = '';
-                    }, 500);
-                }
-                
-                // Check if all jars are filled to 100%
-                checkAllJarsFilled();
-            }
+    const honeyLevel = document.getElementById(`honey-${jarIndex}`);
+    let currentHeight = parseInt(honeyLevel.style.height);
+    
+    if (currentHeight < 100) {
+        currentHeight += 10;
+        honeyLevel.style.height = `${currentHeight}%`;
+        
+        if (currentHeight === 100) {
+            honeyLevel.style.backgroundColor = '#ffaa00';
+            const jar = honeyLevel.parentElement;
+            jar.style.animation = 'shake 0.5s';
+            setTimeout(() => {
+                jar.style.animation = '';
+            }, 500);
         }
+        
+        // Check if all jars are filled to 100%
+        checkAllJarsFilled();
+    }
+}
 
         // New function to check if all jars are filled
         function checkAllJarsFilled() {
@@ -753,6 +753,11 @@
                 closeButton.style.cursor = 'pointer';
                 closeButton.addEventListener('click', () => {
                     document.body.removeChild(secretContainer);
+                    // Stop the audio when closing
+                    if (window.bearRaveAudio) {
+                        window.bearRaveAudio.pause();
+                        window.bearRaveAudio.currentTime = 0;
+                    }
                 });
                 
                 // Add all elements to the container
@@ -763,10 +768,11 @@
                 // Add container to the body
                 document.body.appendChild(secretContainer);
                 
-                // Play celebration sound (optional)
-                const audio = new Audio('https://bigsoundbank.com/UPLOAD/mp3/1482.mp3');
-                audio.volume = 0.3;
-                audio.play().catch(e => console.log('Audio autoplay was prevented'));
+                // Play your custom bangerang.mp3 audio
+                const audio = new Audio('bangerang.mp3');
+                window.bearRaveAudio = audio; // Store in window object for access from close button
+                audio.volume = 0.5; // Set volume to 50%
+                audio.play().catch(e => console.log('Audio autoplay was prevented:', e));
                 
                 // Add the fadeIn animation style if it doesn't exist
                 if (!document.getElementById('secret-bear-animations')) {
