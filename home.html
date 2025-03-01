@@ -445,6 +445,14 @@
                 flex-direction: column;
             }
         }
+ 
+            /* OnlyFans icon styling */
+        .fab.fa-of {
+            font-family: Arial, sans-serif;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 0.8em;
+        }
     </style>
 </head>
 <body>
@@ -576,6 +584,7 @@
                 <a href="#"><i class="fab fa-tiktok"></i></a>
                 <a href="#"><i class="fab fa-youtube"></i></a>
                 <a href="#"><i class="fab fa-twitch"></i></a>
+                <a href="#" onclick="showOnlyFansContent(event)"><i class="fab fa-of"></i> OF</a>
             </div>
             <p>© 2025 Mr. Bear's Fan Club - All cuddles reserved</p>
             <p><small>Disclaimer: Actual beariness may exceed displayed levels</small></p>
@@ -663,45 +672,45 @@
         
         // Honey jars interaction
         function increaseHoney(jarIndex) {
-    const honeyLevel = document.getElementById(`honey-${jarIndex}`);
-    let currentHeight = parseInt(honeyLevel.style.height);
-    
-    if (currentHeight < 100) {
-        currentHeight += 10;
-        honeyLevel.style.height = `${currentHeight}%`;
-        
-        if (currentHeight === 100) {
-            honeyLevel.style.backgroundColor = '#ffaa00';
-            const jar = honeyLevel.parentElement;
-            jar.style.animation = 'shake 0.5s';
-            setTimeout(() => {
-                jar.style.animation = '';
-            }, 500);
-        }
-        
-        // Check if all jars are filled to 100%
-        checkAllJarsFilled();
-    }
-}
-
-        // New function to check if all jars are filled
-        function checkAllJarsFilled() {
-            const totalJars = 5;
-            let filledJars = 0;
+            const honeyLevel = document.getElementById(`honey-${jarIndex}`);
+            let currentHeight = parseInt(honeyLevel.style.height);
             
-            for (let i = 0; i < totalJars; i++) {
-                const honeyLevel = document.getElementById(`honey-${i}`);
-                if (parseInt(honeyLevel.style.height) === 100) {
-                    filledJars++;
+            if (currentHeight < 100) {
+                currentHeight += 10;
+                honeyLevel.style.height = `${currentHeight}%`;
+                
+                if (currentHeight === 100) {
+                    honeyLevel.style.backgroundColor = '#ffaa00';
+                    const jar = honeyLevel.parentElement;
+                    jar.style.animation = 'shake 0.5s';
+                    setTimeout(() => {
+                        jar.style.animation = '';
+                    }, 500);
                 }
-            }
-            
-            // If all jars are filled, show the secret bear gif
-            if (filledJars === totalJars) {
-                showSecretBearGif();
+                
+                // Check if all jars are filled to 100%
+                checkAllJarsFilled();
             }
         }
         
+                // New function to check if all jars are filled
+                function checkAllJarsFilled() {
+                    const totalJars = 5;
+                    let filledJars = 0;
+                    
+                    for (let i = 0; i < totalJars; i++) {
+                        const honeyLevel = document.getElementById(`honey-${i}`);
+                        if (parseInt(honeyLevel.style.height) === 100) {
+                            filledJars++;
+                        }
+                    }
+                    
+                    // If all jars are filled, show the secret bear gif
+                    if (filledJars === totalJars) {
+                        showSecretBearGif();
+                    }
+                }
+                
         // New function to display the secret bear gif
         function showSecretBearGif() {
             // Check if the secret container already exists to prevent duplicates
@@ -820,6 +829,82 @@
             75% { transform: translateX(-5px); }
         }`;
         document.head.appendChild(style);
+       
+        // OnlyFans content display
+        function showOnlyFansContent(event) {
+            event.preventDefault();
+            
+            // Check if the popup already exists to prevent duplicates
+            if (!document.getElementById('onlyfans-popup')) {
+                // Create container for the popup
+                const popupContainer = document.createElement('div');
+                popupContainer.id = 'onlyfans-popup';
+                popupContainer.style.position = 'fixed';
+                popupContainer.style.top = '0';
+                popupContainer.style.left = '0';
+                popupContainer.style.width = '100%';
+                popupContainer.style.height = '100%';
+                popupContainer.style.backgroundColor = 'rgba(0,0,0,0.8)';
+                popupContainer.style.display = 'flex';
+                popupContainer.style.flexDirection = 'column';
+                popupContainer.style.justifyContent = 'center';
+                popupContainer.style.alignItems = 'center';
+                popupContainer.style.zIndex = '1000';
+                popupContainer.style.animation = 'fadeIn 0.5s';
+                
+                // Create title
+                const title = document.createElement('h1');
+                title.textContent = 'Mr. Bear\'s Premium Content 🔥';
+                title.style.color = 'var(--primary)';
+                title.style.fontFamily = 'Comic Sans MS, sans-serif';
+                title.style.marginBottom = '20px';
+                title.style.textAlign = 'center';
+                
+                // Create the gif element
+                const gifImage = document.createElement('img');
+                gifImage.src = 'beardance1.gif';
+                gifImage.alt = 'Dancing Bear';
+                gifImage.style.maxWidth = '80%';
+                gifImage.style.maxHeight = '60vh';
+                gifImage.style.borderRadius = '15px';
+                gifImage.style.border = '5px solid var(--primary)';
+                
+                // Create close button
+                const closeButton = document.createElement('button');
+                closeButton.textContent = 'Close';
+                closeButton.style.marginTop = '20px';
+                closeButton.style.padding = '10px 20px';
+                closeButton.style.backgroundColor = 'var(--primary)';
+                closeButton.style.color = 'white';
+                closeButton.style.border = 'none';
+                closeButton.style.borderRadius = '20px';
+                closeButton.style.fontFamily = 'Comic Sans MS, sans-serif';
+                closeButton.style.fontWeight = 'bold';
+                closeButton.style.cursor = 'pointer';
+                closeButton.addEventListener('click', () => {
+                    document.body.removeChild(popupContainer);
+                    // Stop the audio when closing
+                    if (window.ofAudio) {
+                        window.ofAudio.pause();
+                        window.ofAudio.currentTime = 0;
+                    }
+                });
+                
+                // Add all elements to the container
+                popupContainer.appendChild(title);
+                popupContainer.appendChild(gifImage);
+                popupContainer.appendChild(closeButton);
+                
+                // Add container to the body
+                document.body.appendChild(popupContainer);
+                
+                // Play your audio
+                const audio = new Audio('closer_cut.mp3');
+                window.ofAudio = audio; // Store in window object for access from close button
+                audio.volume = 0.5; // Set volume to 50%
+                audio.play().catch(e => console.log('Audio autoplay was prevented:', e));
+            }
+        }
     </script>
 </body>
 </html>
