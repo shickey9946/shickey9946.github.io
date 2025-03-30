@@ -6,254 +6,305 @@
     <title>Mr. Bear's Official Fan Page 🐻</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* CSS Variables for theming */
         :root {
-            --primary: #4C3A18;
-            --secondary: #FFEBC6;
-            --background: #fff5e6;
-            --text: #4a3500;
-            --accent: #FFEBC6;
+            --primary: #4C3A18; /* Dark brown */
+            --secondary: #FFEBC6; /* Light beige */
+            --background: #fff5e6; /* Very light beige background */
+            --text: #4a3500; /* Dark text color */
+            --accent: #FFEBC6; /* Accent color (same as secondary) */
         }
-        
+
+        /* Basic body styling */
         body {
-            font-family: 'Comic Sans MS', sans-serif;
+            font-family: 'Comic Sans MS', sans-serif; /* Fun font */
             margin: 0;
             padding: 0;
             background-color: var(--background);
             color: var(--text);
-            transition: background-color 0.5s;
+            transition: background-color 0.5s; /* Smooth transition for dark mode */
         }
-        
+
+        /* Main content container */
         .container {
             max-width: 1000px;
-            margin: 0 auto;
+            margin: 0 auto; /* Center the container */
             padding: 20px;
         }
-        
-        /* Navigation */
+
+        /* Navigation Bar */
         nav {
             background-color: var(--primary);
             padding: 10px 0;
-            position: sticky;
+            position: sticky; /* Make navbar stick to top */
             top: 0;
-            z-index: 100;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            z-index: 100; /* Ensure navbar is above other content */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow */
         }
-        
-        /* Mobile navigation */
+
+        /* Hamburger menu for mobile */
         .hamburger-menu {
-            display: none;
+            display: none; /* Hidden by default */
             cursor: pointer;
             font-size: 1.5rem;
             background-color: var(--primary);
             color: white;
             border: none;
             padding: 8px 15px;
-            margin: 0 auto;
+            margin: 0 auto; /* Center button when displayed */
         }
-        
+
+        /* Navigation links list */
         nav ul {
-            display: flex;
-            justify-content: center;
-            list-style-type: none;
+            display: flex; /* Arrange links horizontally */
+            justify-content: center; /* Center links */
+            list-style-type: none; /* Remove bullet points */
             padding: 0;
             margin: 0;
-            flex-wrap: wrap;
+            flex-wrap: wrap; /* Allow links to wrap on smaller screens */
         }
-        
+
+        /* Individual navigation list items */
         nav li {
-            margin: 0 15px;
+            margin: 0 15px; /* Spacing between links */
         }
-        
+
+        /* Navigation links */
         nav a {
             color: white;
             text-decoration: none;
             font-weight: bold;
             padding: 8px 15px;
-            border-radius: 20px;
-            transition: background-color 0.3s;
-            display: inline-block;
+            border-radius: 20px; /* Rounded corners for links */
+            transition: background-color 0.3s, transform 0.3s; /* Smooth hover effects */
+            display: inline-block; /* Allows padding and transforms */
         }
-        
+
+        /* Hover effect for navigation links */
         nav a:hover {
-            background-color: rgba(255,255,255,0.2);
-            transform: scale(1.05);
+            background-color: rgba(255,255,255,0.2); /* Slight highlight on hover */
+            transform: scale(1.05); /* Slightly enlarge on hover */
         }
-        
+
+        /* Style for the active navigation link */
         nav a.active {
             background-color: white;
             color: var(--primary);
         }
-        
-        /* Header */
+
+        /* Header Section */
         header {
             text-align: center;
             padding: 40px 20px;
             background-color: var(--secondary);
-            border-radius: 15px;
+            border-radius: 15px; /* Rounded corners */
             margin-bottom: 30px;
-            position: relative;
-            overflow: hidden;
+            position: relative; /* Needed for absolute positioning of paw prints */
+            overflow: hidden; /* Hide overflowing elements like paw prints */
         }
-        
+
+        /* Main heading */
         header h1 {
             font-size: 2.5rem;
             margin-bottom: 10px;
-            animation: bounce 2s infinite;
+            animation: bounce 2s infinite; /* Bouncing animation */
         }
-        
+
+        /* Bouncing animation keyframes */
         @keyframes bounce {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
         }
-        
+
+        /* Subheading */
         header h3 {
             font-style: italic;
             margin-top: 0;
         }
-        
+
+        /* Decorative paw prints in header */
         .paw-print {
             position: absolute;
             width: 30px;
             height: 30px;
-            background-color: rgba(204, 153, 0, 0.2);
-            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-            transform: rotate(45deg);
+            background-color: rgba(204, 153, 0, 0.2); /* Semi-transparent brown */
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; /* Paw shape */
+            transform: rotate(45deg); /* Rotate for paw orientation */
         }
-        
-        /* Sections */
+
+        /* Bear Facts Sections */
         .bear-facts {
             background-color: white;
             padding: 25px;
             border-radius: 15px;
             margin: 25px 0;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* Subtle shadow */
+            transition: transform 0.3s; /* Smooth hover effect */
         }
-        
+
+        /* Hover effect for bear facts sections */
         .bear-facts:hover {
-            transform: translateY(-5px);
+            transform: translateY(-5px); /* Lift section slightly on hover */
         }
-        
+
+        /* Headings within bear facts sections */
         .bear-facts h2 {
-            border-bottom: 2px dashed var(--primary);
+            border-bottom: 2px dashed var(--primary); /* Dashed underline */
             padding-bottom: 10px;
-            display: flex;
+            display: flex; /* Align icon and text */
             align-items: center;
         }
-        
+
+        /* Icons within bear facts headings */
         .bear-facts h2 i {
             margin-right: 10px;
             color: var(--primary);
         }
-        
-        /* Gallery */
-                  .gallery {
+
+        /* Image Gallery */
+        .gallery {
             display: grid;
+            /* Create 3 equal columns */
             grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
+            gap: 15px; /* Spacing between grid items */
             margin: 30px 0;
             width: 100%;
         }
-        
+
+        /* Individual gallery item container */
         .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px;
+            position: relative; /* For absolute positioning of caption */
+            overflow: hidden; /* Clip overflowing content (like image hover effect) */
+            border-radius: 10px; /* Rounded corners for the container */
             cursor: pointer;
-            aspect-ratio: 1/1; /* Square aspect ratio */
+            aspect-ratio: 1 / 1; /* Maintain a square aspect ratio */
+            /* *** FIX: Border applied to the container *** */
+            border: 3px solid var(--primary);
         }
-        
+
+        /* Gallery image styling */
         .gallery-item img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* This is important */
-            border: 3px solid var(--primary);
-            border-radius: 10px;
-            transition: transform 0.5s;
-            display: block; /* This removes any default spacing */
+            object-fit: cover; /* Ensure image covers the container without distortion */
+            /* *** FIX: Border removed from the image *** */
+            /* border: 3px solid var(--primary); */
+            /* Keep image corners slightly rounded *inside* the container border */
+            border-radius: 7px; /* Slightly less than container radius */
+            transition: transform 0.5s; /* Smooth zoom effect on hover */
+            display: block; /* Remove potential extra space below image */
         }
-        
+
+        /* Hover effect for gallery image (zoom) */
+        .gallery-item:hover img {
+             transform: scale(1.1); /* Zoom in slightly */
+        }
+
+        /* Caption overlay for gallery items */
         .gallery-caption {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            background-color: rgba(0,0,0,0.7);
+            background-color: rgba(0,0,0,0.7); /* Semi-transparent black background */
             color: white;
             padding: 10px;
-            transform: translateY(100%);
-            transition: transform 0.3s;
+            transform: translateY(100%); /* Initially hidden below the item */
+            transition: transform 0.3s; /* Smooth slide-in effect */
             font-size: 0.9rem;
         }
-        
+
+        /* Show caption on gallery item hover */
         .gallery-item:hover .gallery-caption {
-            transform: translateY(0);
+            transform: translateY(0); /* Slide caption into view */
         }
-        
-        /* Mood Toggle */
+
+        /* Mood Toggle Button (Dark Mode) */
         .mood-toggle {
-            position: fixed;
+            position: fixed; /* Keep button fixed on screen */
             bottom: 20px;
             right: 20px;
             background-color: var(--primary);
             color: white;
             width: 50px;
             height: 50px;
-            border-radius: 50%;
+            border-radius: 50%; /* Circular button */
             display: flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            z-index: 100;
-            transition: transform 0.3s, background-color 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Button shadow */
+            z-index: 100; /* Ensure button is above other content */
+            transition: transform 0.3s, background-color 0.3s; /* Smooth transitions */
         }
-        
+
+        /* Hover effect for mood toggle button */
         .mood-toggle:hover {
-            transform: scale(1.1);
+            transform: scale(1.1); /* Slightly enlarge button on hover */
         }
-        
+
+        /* Icon inside mood toggle button */
         .mood-toggle i {
             font-size: 1.5rem;
         }
-        
-        /* Dark mode styles */
+
+        /* Dark Mode Styles */
         body.dark-mode {
-            --background: #2c2c2c;
-            --secondary: #4d4d4d;
-            --text: #f0f0f0;
+            --background: #2c2c2c; /* Dark background */
+            --secondary: #4d4d4d; /* Darker secondary color */
+            --text: #f0f0f0; /* Light text color */
+            /* Primary color remains the same */
         }
-        
+
+        /* Adjust bear facts background in dark mode */
         body.dark-mode .bear-facts {
             background-color: #3d3d3d;
         }
-        
-        /* New feature: Honey Jar Counter */
+         /* Adjust newsletter background in dark mode */
+        body.dark-mode .newsletter {
+            background-color: #3d3d3d;
+        }
+         /* Adjust header/footer background in dark mode */
+        body.dark-mode header,
+        body.dark-mode footer,
+        body.dark-mode .quotes-carousel {
+             background-color: var(--secondary); /* Use the darker secondary color */
+        }
+         /* Adjust honey counter text color in dark mode */
+        body.dark-mode .honey-counter-text {
+            color: var(--secondary); /* Lighter color for better contrast */
+        }
+
+
+        /* Honey Jar Counter Feature */
         .honey-counter {
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 30px 0;
-            gap: 15px;
-            flex-wrap: wrap;
+            gap: 15px; /* Spacing between jars */
+            flex-wrap: wrap; /* Allow jars to wrap on smaller screens */
         }
-        
+
+        /* Individual honey jar */
         .honey-jar {
             width: 60px;
             height: 80px;
-            background-color: #ffc04d;
-            border-radius: 5px 5px 20px 20px;
-            position: relative;
-            overflow: hidden;
+            background-color: #ffc04d; /* Honey color */
+            border-radius: 5px 5px 20px 20px; /* Jar shape */
+            position: relative; /* For absolute positioning of lid and level */
+            overflow: hidden; /* Hide overflowing honey level */
             cursor: pointer;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            transition: transform 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Jar shadow */
+            transition: transform 0.3s; /* Smooth hover effect */
         }
-        
+
+        /* Hover effect for honey jar */
         .honey-jar:hover {
-            transform: translateY(-5px);
+            transform: translateY(-5px); /* Lift jar slightly on hover */
         }
-        
+
+        /* Honey jar lid */
         .honey-jar::before {
             content: '';
             position: absolute;
@@ -261,26 +312,28 @@
             left: 0;
             right: 0;
             height: 15px;
-            background-color: #cc9900;
-            border-radius: 5px 5px 0 0;
+            background-color: #cc9900; /* Darker lid color */
+            border-radius: 5px 5px 0 0; /* Lid shape */
         }
-        
+
+        /* Honey level inside the jar */
         .honey-level {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            height: 70%;
-            background-color: #ffcc00;
-            transition: height 0.5s;
+            height: 70%; /* Default honey level */
+            background-color: #ffcc00; /* Lighter honey color */
+            transition: height 0.5s; /* Smooth animation for level change */
         }
-        
+
+        /* Text next to honey jars */
         .honey-counter-text {
             font-size: 1.5rem;
             font-weight: bold;
             color: var(--primary);
         }
-        
+
         /* Quotes Carousel */
         .quotes-carousel {
             background-color: var(--secondary);
@@ -288,178 +341,285 @@
             border-radius: 15px;
             text-align: center;
             margin: 30px 0;
-            position: relative;
+            position: relative; /* For positioning controls */
         }
-        
+
+        /* Individual quote */
         .quote {
-            display: none;
+            display: none; /* Hide quotes by default */
             padding: 20px;
             font-style: italic;
         }
-        
+
+        /* Active quote styling */
         .quote.active {
-            display: block;
-            animation: fadeIn 1s;
+            display: block; /* Show the active quote */
+            animation: fadeIn 1s; /* Fade-in animation */
         }
-        
+
+        /* Fade-in animation keyframes */
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
-        
+
+        /* Carousel controls (buttons) */
         .quote-controls {
             display: flex;
             justify-content: center;
             margin-top: 20px;
-            gap: 10px;
+            gap: 10px; /* Spacing between buttons */
         }
-        
+
+        /* Carousel control buttons */
         .quote-controls button {
             background-color: var(--primary);
             color: white;
             border: none;
-            border-radius: 50%;
+            border-radius: 50%; /* Circular buttons */
             width: 40px;
             height: 40px;
             cursor: pointer;
-            transition: background-color 0.3s, transform 0.3s;
+            transition: background-color 0.3s, transform 0.3s; /* Smooth hover effects */
         }
-        
+
+        /* Hover effect for carousel buttons */
         .quote-controls button:hover {
-            background-color: #aa8000;
-            transform: scale(1.1);
+            background-color: #aa8000; /* Darker brown on hover */
+            transform: scale(1.1); /* Slightly enlarge on hover */
         }
-        
-        /* Newsletter Signup */
+
+        /* Newsletter Signup Section */
         .newsletter {
             background-color: white;
             padding: 25px;
             border-radius: 15px;
             margin: 30px 0;
             text-align: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* Subtle shadow */
         }
-        
+
+        /* Newsletter form */
         .newsletter form {
             display: flex;
-            max-width: 500px;
-            margin: 20px auto;
-            gap: 10px;
+            max-width: 500px; /* Limit form width */
+            margin: 20px auto; /* Center form */
+            gap: 10px; /* Spacing between input and button */
         }
-        
+
+        /* Newsletter input field */
         .newsletter input {
-            flex: 1;
+            flex: 1; /* Allow input to grow */
             padding: 10px 15px;
             border: 2px solid var(--secondary);
-            border-radius: 20px;
-            font-family: inherit;
+            border-radius: 20px; /* Rounded input field */
+            font-family: inherit; /* Use body font */
         }
-        
+
+        /* Newsletter submit button */
         .newsletter button {
             background-color: var(--primary);
             color: white;
             border: none;
             padding: 10px 20px;
-            border-radius: 20px;
+            border-radius: 20px; /* Rounded button */
             cursor: pointer;
-            font-family: inherit;
+            font-family: inherit; /* Use body font */
             font-weight: bold;
-            transition: background-color 0.3s, transform 0.3s;
+            transition: background-color 0.3s, transform 0.3s; /* Smooth hover effects */
         }
-        
+
+        /* Hover effect for newsletter button */
         .newsletter button:hover {
-            background-color: #aa8000;
-            transform: scale(1.05);
+            background-color: #aa8000; /* Darker brown on hover */
+            transform: scale(1.05); /* Slightly enlarge on hover */
         }
-        
-        /* Footer */
+
+        /* Footer Section */
         footer {
             text-align: center;
             margin-top: 40px;
             padding: 20px;
             background-color: var(--secondary);
-            border-radius: 15px 15px 0 0;
+            border-radius: 15px 15px 0 0; /* Rounded top corners */
             color: var(--text);
         }
-        
+
+        /* Social Media Links Container */
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 15px; /* Spacing between icons */
             margin: 15px 0;
         }
-        
+
+        /* Individual social media links */
         .social-links a {
             background-color: var(--primary);
             color: white;
             width: 40px;
             height: 40px;
-            border-radius: 50%;
+            border-radius: 50%; /* Circular icons */
             display: flex;
             justify-content: center;
             align-items: center;
-            text-decoration: none;
-            transition: transform 0.3s, background-color 0.3s;
+            text-decoration: none; /* Remove underline */
+            transition: transform 0.3s, background-color 0.3s; /* Smooth hover effects */
         }
-        
+
+        /* Hover effect for social media links */
         .social-links a:hover {
-            background-color: #aa8000;
-            transform: scale(1.1);
+            background-color: #aa8000; /* Darker brown on hover */
+            transform: scale(1.1); /* Slightly enlarge on hover */
         }
-        
-        /* Responsive design */
+
+        /* Responsive Design - Adjustments for smaller screens */
         @media (max-width: 768px) {
+            /* Show hamburger menu on smaller screens */
             .hamburger-menu {
                 display: block;
             }
-            
+
+            /* Style mobile menu list */
             nav ul {
-                flex-direction: column;
+                flex-direction: column; /* Stack links vertically */
                 align-items: center;
                 gap: 10px;
-                max-height: 0;
-                overflow: hidden;
-                transition: max-height 0.5s ease-out;
+                max-height: 0; /* Hide menu by default */
+                overflow: hidden; /* Hide overflowing content */
+                transition: max-height 0.5s ease-out; /* Smooth slide-down animation */
             }
-            
+
+            /* Class to show the mobile menu */
             nav ul.show {
-                max-height: 300px; /* Adjust this value as needed */
+                max-height: 300px; /* Adjust height as needed to fit links */
             }
-            
+
+            /* Style mobile menu list items */
             nav li {
                 width: 100%;
                 text-align: center;
                 margin: 5px 0;
             }
-            
+
+            /* Style mobile menu links */
             nav a {
-                width: 80%;
-                padding: 8px 0;
+                width: 80%; /* Make links take up more width */
+                padding: 8px 0; /* Adjust padding */
             }
-            
+
+            /* Adjust gallery grid for smaller screens */
             .gallery {
+                /* Create columns that are at least 150px wide, filling available space */
                 grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             }
-            
+
+            /* Stack newsletter form elements vertically */
             .newsletter form {
                 flex-direction: column;
             }
         }
- 
-            /* OnlyFans icon styling */
+
+        /* Custom styling for the Font Awesome 'OF' icon (if needed) */
         .fab.fa-of {
-            font-family: Arial, sans-serif;
+            font-family: Arial, sans-serif; /* Use a standard font */
             font-style: normal;
             font-weight: bold;
-            font-size: 0.8em;
+            font-size: 0.8em; /* Adjust size if needed */
         }
+
+        /* Shake animation for honey jars */
+         @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+        }
+
+        /* Styles for the secret bear rave popup */
+        #secret-bear-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            animation: fadeIn 0.5s;
+        }
+        #secret-bear-container h1 {
+             color: var(--primary); /* Use theme color */
+             font-family: 'Comic Sans MS', sans-serif;
+             margin-bottom: 20px;
+             text-align: center;
+        }
+        #secret-bear-container img {
+            max-width: 80%;
+            max-height: 60vh;
+            border-radius: 15px;
+            border: 5px solid var(--primary); /* Use theme color */
+        }
+        #secret-bear-container button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: var(--primary); /* Use theme color */
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-family: 'Comic Sans MS', sans-serif;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* Styles for the OnlyFans popup */
+         #onlyfans-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            animation: fadeIn 0.5s;
+        }
+         #onlyfans-popup h1 {
+             color: var(--primary); /* Use theme color */
+             font-family: 'Comic Sans MS', sans-serif;
+             margin-bottom: 20px;
+             text-align: center;
+        }
+         #onlyfans-popup img {
+            max-width: 80%;
+            max-height: 60vh;
+            border-radius: 15px;
+            border: 5px solid var(--primary); /* Use theme color */
+        }
+         #onlyfans-popup button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: var(--primary); /* Use theme color */
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-family: 'Comic Sans MS', sans-serif;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
     </style>
 </head>
 <body>
     <nav>
         <button class="hamburger-menu" onclick="toggleMenu()">
-            <i class="fas fa-bars"></i>
-        </button>
+            <i class="fas fa-bars"></i> </button>
         <ul id="mobile-menu">
             <li><a href="#" class="active"><i class="fas fa-home"></i> Home</a></li>
             <li><a href="#"><i class="fas fa-book"></i> Bear Blog</a></li>
@@ -474,10 +634,9 @@
         <header>
             <h1>🐻 Official Mr. Bear Website 🐾</h1>
             <h3>"The Freakiest Bear in Somerville"</h3>
-            <!-- Decorative paw prints -->
             <div id="paw-prints-container"></div>
         </header>
-        
+
         <div class="honey-counter">
             <p class="honey-counter-text">Love-O-Meter: </p>
             <div class="honey-jar" onclick="increaseHoney(0)">
@@ -514,15 +673,15 @@
 
         <div class="gallery">
             <div class="gallery-item">
-                <img src="https://shickey9946.github.io/mr_bear_coding.jpg" alt="Mr. Bear coding">
+                <img src="https://shickey9946.github.io/mr_bear_coding.jpg" alt="Mr. Bear coding" onerror="this.onerror=null; this.src='https://placehold.co/300x300/FFEBC6/4C3A18?text=Bear+Coding!';">
                 <div class="gallery-caption">Debugging like a boss</div>
             </div>
             <div class="gallery-item">
-                <img src="https://shickey9946.github.io/mr_bear_chilling.jpg" alt="Mr. Bear sippin on Josh and Coors">
+                <img src="https://shickey9946.github.io/mr_bear_chilling.jpg" alt="Mr. Bear sippin on Josh and Coors" onerror="this.onerror=null; this.src='https://placehold.co/300x300/FFEBC6/4C3A18?text=Bear+Chilling!';">
                 <div class="gallery-caption">Friday night vibes</div>
             </div>
             <div class="gallery-item">
-                <img src="https://shickey9946.github.io/mr_bear_sniffing.jpg" alt="Mr. Bear smelling his favorite deodorant">
+                <img src="https://shickey9946.github.io/mr_bear_sniffing.jpg" alt="Mr. Bear smelling his favorite deodorant" onerror="this.onerror=null; this.src='https://placehold.co/300x300/FFEBC6/4C3A18?text=Bear+Sniffing!';">
                 <div class="gallery-caption">That fresh bear scent</div>
             </div>
         </div>
@@ -555,7 +714,7 @@
                 <li>🫦 Going on hot dates (9:00 PM - whenever)</li>
             </ul>
         </div>
-        
+
         <div class="bear-facts">
             <h2><i class="fas fa-star"></i> Achievements & Awards</h2>
             <ul>
@@ -593,318 +752,292 @@
     </div>
 
     <div class="mood-toggle" onclick="toggleDarkMode()">
-        <i class="fas fa-moon"></i>
-    </div>
+        <i class="fas fa-moon"></i> </div>
 
     <script>
-        // Paw prints animation
+        // --- Paw Prints Animation ---
+        // Add decorative paw prints to the header when the page loads
         document.addEventListener('DOMContentLoaded', function() {
-            const header = document.querySelector('header');
+            const header = document.querySelector('header'); // Not strictly needed here, but good practice
             const pawPrintsContainer = document.getElementById('paw-prints-container');
-            
+
+            // Create multiple paw prints with random positions and opacities
             for (let i = 0; i < 15; i++) {
                 const pawPrint = document.createElement('div');
                 pawPrint.classList.add('paw-print');
+                // Random horizontal position
                 pawPrint.style.left = `${Math.random() * 100}%`;
+                // Random vertical position
                 pawPrint.style.top = `${Math.random() * 100}%`;
+                // Random opacity for variation
                 pawPrint.style.opacity = Math.random() * 0.5 + 0.2;
                 pawPrintsContainer.appendChild(pawPrint);
             }
         });
-        
-        // Dark mode toggle
+
+        // --- Dark Mode Toggle ---
         function toggleDarkMode() {
+            // Add or remove the 'dark-mode' class from the body
             document.body.classList.toggle('dark-mode');
             const icon = document.querySelector('.mood-toggle i');
-            
+
+            // Change the icon based on the current mode
             if (document.body.classList.contains('dark-mode')) {
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
+                icon.classList.remove('fa-moon'); // Remove moon icon
+                icon.classList.add('fa-sun'); // Add sun icon
             } else {
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
+                icon.classList.remove('fa-sun'); // Remove sun icon
+                icon.classList.add('fa-moon'); // Add moon icon
             }
         }
-        
-        // Mobile menu toggle
+
+        // --- Mobile Menu Toggle ---
         function toggleMenu() {
             const menu = document.getElementById('mobile-menu');
+            // Add or remove the 'show' class to display/hide the menu
             menu.classList.toggle('show');
-            
-            const menuButton = document.querySelector('.hamburger-menu i');
+
+            const menuButtonIcon = document.querySelector('.hamburger-menu i');
+            // Change the hamburger icon to a close icon (X) when menu is open
             if (menu.classList.contains('show')) {
-                menuButton.classList.remove('fa-bars');
-                menuButton.classList.add('fa-times');
+                menuButtonIcon.classList.remove('fa-bars'); // Remove bars icon
+                menuButtonIcon.classList.add('fa-times'); // Add times (X) icon
             } else {
-                menuButton.classList.remove('fa-times');
-                menuButton.classList.add('fa-bars');
+                menuButtonIcon.classList.remove('fa-times'); // Remove times (X) icon
+                menuButtonIcon.classList.add('fa-bars'); // Add bars icon
             }
         }
-        
-        // Quotes carousel
-        let currentQuoteIndex = 0;
-        const quotes = document.querySelectorAll('.quote');
-        
+
+        // --- Quotes Carousel Logic ---
+        let currentQuoteIndex = 0; // Track the currently displayed quote
+        const quotes = document.querySelectorAll('.quote'); // Get all quote elements
+
+        // Function to display a specific quote by index
         function showQuote(index) {
+            // Hide all quotes first
             quotes.forEach(quote => quote.classList.remove('active'));
-            
+
+            // Handle wrapping around (going past the last quote or before the first)
             if (index < 0) {
-                currentQuoteIndex = quotes.length - 1;
+                currentQuoteIndex = quotes.length - 1; // Go to the last quote
             } else if (index >= quotes.length) {
-                currentQuoteIndex = 0;
+                currentQuoteIndex = 0; // Go to the first quote
             } else {
-                currentQuoteIndex = index;
+                currentQuoteIndex = index; // Set the current index
             }
-            
+
+            // Show the selected quote by adding the 'active' class
             quotes[currentQuoteIndex].classList.add('active');
         }
-        
+
+        // Function to show the next quote
         function nextQuote() {
             showQuote(currentQuoteIndex + 1);
         }
-        
+
+        // Function to show the previous quote
         function prevQuote() {
             showQuote(currentQuoteIndex - 1);
         }
-        
-        // Auto rotate quotes
+
+        // Automatically advance the carousel every 8 seconds
         setInterval(nextQuote, 8000);
-        
-        // Honey jars interaction
+
+        // --- Honey Jars Interaction ---
+        // Function to increase the honey level in a specific jar
         function increaseHoney(jarIndex) {
             const honeyLevel = document.getElementById(`honey-${jarIndex}`);
+            // Get the current height (remove '%' and convert to number)
             let currentHeight = parseInt(honeyLevel.style.height);
-            
+
+            // Increase height only if it's less than 100%
             if (currentHeight < 100) {
-                currentHeight += 10;
-                honeyLevel.style.height = `${currentHeight}%`;
-                
+                currentHeight += 10; // Increase by 10%
+                honeyLevel.style.height = `${currentHeight}%`; // Update the style
+
+                // Special effect when a jar reaches 100%
                 if (currentHeight === 100) {
-                    honeyLevel.style.backgroundColor = '#ffaa00';
-                    const jar = honeyLevel.parentElement;
-                    jar.style.animation = 'shake 0.5s';
+                    honeyLevel.style.backgroundColor = '#ffaa00'; // Slightly darker full color
+                    const jar = honeyLevel.parentElement; // Get the jar element
+                    jar.style.animation = 'shake 0.5s'; // Apply shake animation
+                    // Remove the animation after it finishes so it can be reapplied
                     setTimeout(() => {
                         jar.style.animation = '';
                     }, 500);
                 }
-                
-                // Check if all jars are filled to 100%
+
+                // Check if all jars are now filled
                 checkAllJarsFilled();
             }
         }
-        
-                // New function to check if all jars are filled
-                function checkAllJarsFilled() {
-                    const totalJars = 5;
-                    let filledJars = 0;
-                    
-                    for (let i = 0; i < totalJars; i++) {
-                        const honeyLevel = document.getElementById(`honey-${i}`);
-                        if (parseInt(honeyLevel.style.height) === 100) {
-                            filledJars++;
-                        }
-                    }
-                    
-                    // If all jars are filled, show the secret bear gif
-                    if (filledJars === totalJars) {
-                        showSecretBearGif();
-                    }
+
+        // Function to check if all honey jars are filled to 100%
+        function checkAllJarsFilled() {
+            const totalJars = 5;
+            let filledJars = 0;
+
+            // Count how many jars are at 100%
+            for (let i = 0; i < totalJars; i++) {
+                const honeyLevel = document.getElementById(`honey-${i}`);
+                if (parseInt(honeyLevel.style.height) === 100) {
+                    filledJars++;
                 }
-                
-        // New function to display the secret bear gif
+            }
+
+            // If all jars are filled, trigger the secret popup
+            if (filledJars === totalJars) {
+                showSecretBearGif();
+            }
+        }
+
+        // Function to display the secret bear rave popup
         function showSecretBearGif() {
-            // Check if the secret container already exists to prevent duplicates
+            // Prevent creating multiple popups
             if (!document.getElementById('secret-bear-container')) {
-                // Create container for the secret gif
+                // Create the main container div for the popup
                 const secretContainer = document.createElement('div');
                 secretContainer.id = 'secret-bear-container';
-                secretContainer.style.position = 'fixed';
-                secretContainer.style.top = '0';
-                secretContainer.style.left = '0';
-                secretContainer.style.width = '100%';
-                secretContainer.style.height = '100%';
-                secretContainer.style.backgroundColor = 'rgba(0,0,0,0.8)';
-                secretContainer.style.display = 'flex';
-                secretContainer.style.flexDirection = 'column';
-                secretContainer.style.justifyContent = 'center';
-                secretContainer.style.alignItems = 'center';
-                secretContainer.style.zIndex = '1000';
-                secretContainer.style.animation = 'fadeIn 0.5s';
-                
-                // Create congratulations message
+                // Styles are applied via CSS using the ID
+
+                // Create the congratulations message
                 const message = document.createElement('h1');
                 message.textContent = '🎉 You Found the Secret Bear Rave! 🎉';
-                message.style.color = 'var(--primary)';
-                message.style.fontFamily = 'Comic Sans MS, sans-serif';
-                message.style.marginBottom = '20px';
-                message.style.textAlign = 'center';
-                
-                // Create the gif element
+                // Styles applied via CSS
+
+                // Create the image element for the GIF
                 const gifImage = document.createElement('img');
+                // Use a placeholder if the actual GIF isn't found
                 gifImage.src = 'bear_rave.gif';
                 gifImage.alt = 'Dancing Bear';
-                gifImage.style.maxWidth = '80%';
-                gifImage.style.maxHeight = '60vh';
-                gifImage.style.borderRadius = '15px';
-                gifImage.style.border = '5px solid var(--primary)';
-                
-                // Create close button
+                gifImage.onerror = function() {
+                    this.onerror=null;
+                    this.src='https://placehold.co/400x300/2c2c2c/FFEBC6?text=Secret+Rave!';
+                    this.alt='Secret Placeholder';
+                };
+                // Styles applied via CSS
+
+                // Create the close button
                 const closeButton = document.createElement('button');
                 closeButton.textContent = 'Close';
-                closeButton.style.marginTop = '20px';
-                closeButton.style.padding = '10px 20px';
-                closeButton.style.backgroundColor = 'var(--primary)';
-                closeButton.style.color = 'white';
-                closeButton.style.border = 'none';
-                closeButton.style.borderRadius = '20px';
-                closeButton.style.fontFamily = 'Comic Sans MS, sans-serif';
-                closeButton.style.fontWeight = 'bold';
-                closeButton.style.cursor = 'pointer';
+                // Styles applied via CSS
+                // Add event listener to remove the popup when clicked
                 closeButton.addEventListener('click', () => {
                     document.body.removeChild(secretContainer);
                     // Stop the audio when closing
                     if (window.bearRaveAudio) {
                         window.bearRaveAudio.pause();
-                        window.bearRaveAudio.currentTime = 0;
+                        window.bearRaveAudio.currentTime = 0; // Reset audio playback
                     }
                 });
-                
-                // Add all elements to the container
+
+                // Add the message, GIF, and button to the container
                 secretContainer.appendChild(message);
                 secretContainer.appendChild(gifImage);
                 secretContainer.appendChild(closeButton);
-                
-                // Add container to the body
+
+                // Add the popup container to the page body
                 document.body.appendChild(secretContainer);
-                
-                // Play your custom bangerang.mp3 audio
-                const audio = new Audio('bangerang.mp3');
-                window.bearRaveAudio = audio; // Store in window object for access from close button
-                audio.volume = 0.5; // Set volume to 50%
-                audio.play().catch(e => console.log('Audio autoplay was prevented:', e));
-                
-                // Add the fadeIn animation style if it doesn't exist
-                if (!document.getElementById('secret-bear-animations')) {
-                    const style = document.createElement('style');
-                    style.id = 'secret-bear-animations';
-                    style.textContent = `
-                        @keyframes fadeIn {
-                            from { opacity: 0; }
-                            to { opacity: 1; }
-                        }
-                    `;
-                    document.head.appendChild(style);
+
+                // Attempt to play the rave audio
+                try {
+                    const audio = new Audio('bangerang.mp3');
+                    window.bearRaveAudio = audio; // Store reference for pausing later
+                    audio.volume = 0.5; // Set volume
+                    audio.play().catch(e => console.warn('Rave audio autoplay prevented:', e));
+                } catch (e) {
+                    console.error("Could not load or play rave audio:", e);
                 }
             }
         }
-        
-        // Reset function (optional) - could be used to add a "Reset" button
+
+        // Optional: Function to reset honey jars (could be linked to a button)
         function resetHoneyJars() {
             for (let i = 0; i < 5; i++) {
                 const honeyLevel = document.getElementById(`honey-${i}`);
+                // Reset to initial heights
                 honeyLevel.style.height = `${10 * (i + 1)}%`;
+                // Reset color
                 honeyLevel.style.backgroundColor = '#ffcc00';
             }
         }
-        
-        // Newsletter subscription
+
+        // --- Newsletter Subscription ---
         function subscribeNewsletter() {
             const messageElement = document.getElementById('newsletter-message');
+            // Display a success message
             messageElement.textContent = "Thanks for subscribing to Mr. Bear's adventures!";
             messageElement.style.color = "green";
-            
+
+            // Clear the form and message after a few seconds
             setTimeout(() => {
+                // Find the form within the newsletter section and reset it
                 document.querySelector('.newsletter form').reset();
-                messageElement.textContent = "";
-            }, 3000);
+                messageElement.textContent = ""; // Clear the message
+            }, 3000); // 3 seconds delay
         }
-        
-        // Define shake animation
-        const style = document.createElement('style');
-        style.textContent = `
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            50% { transform: translateX(5px); }
-            75% { transform: translateX(-5px); }
-        }`;
-        document.head.appendChild(style);
-       
-        // OnlyFans content display
+
+
+        // --- OnlyFans Popup ---
         function showOnlyFansContent(event) {
-            event.preventDefault();
-            
-            // Check if the popup already exists to prevent duplicates
+            event.preventDefault(); // Prevent the link from navigating
+
+            // Prevent creating multiple popups
             if (!document.getElementById('onlyfans-popup')) {
-                // Create container for the popup
+                // Create the main container div for the popup
                 const popupContainer = document.createElement('div');
                 popupContainer.id = 'onlyfans-popup';
-                popupContainer.style.position = 'fixed';
-                popupContainer.style.top = '0';
-                popupContainer.style.left = '0';
-                popupContainer.style.width = '100%';
-                popupContainer.style.height = '100%';
-                popupContainer.style.backgroundColor = 'rgba(0,0,0,0.8)';
-                popupContainer.style.display = 'flex';
-                popupContainer.style.flexDirection = 'column';
-                popupContainer.style.justifyContent = 'center';
-                popupContainer.style.alignItems = 'center';
-                popupContainer.style.zIndex = '1000';
-                popupContainer.style.animation = 'fadeIn 0.5s';
-                
-                // Create title
+                 // Styles are applied via CSS using the ID
+
+                // Create the title
                 const title = document.createElement('h1');
                 title.textContent = 'Mr. Bear\'s Premium Content 🔥';
-                title.style.color = 'var(--primary)';
-                title.style.fontFamily = 'Comic Sans MS, sans-serif';
-                title.style.marginBottom = '20px';
-                title.style.textAlign = 'center';
-                
-                // Create the gif element
+                 // Styles applied via CSS
+
+                // Create the image element for the GIF
                 const gifImage = document.createElement('img');
-                gifImage.src = 'beardance1.gif';
+                gifImage.src = 'beardance1.gif'; // Path to the GIF
                 gifImage.alt = 'Dancing Bear';
-                gifImage.style.maxWidth = '80%';
-                gifImage.style.maxHeight = '60vh';
-                gifImage.style.borderRadius = '15px';
-                gifImage.style.border = '5px solid var(--primary)';
-                
-                // Create close button
+                 gifImage.onerror = function() { // Fallback if GIF fails
+                    this.onerror=null;
+                    this.src='https://placehold.co/400x300/2c2c2c/FFEBC6?text=Premium+Content!';
+                    this.alt='Premium Placeholder';
+                };
+                 // Styles applied via CSS
+
+                // Create the close button
                 const closeButton = document.createElement('button');
                 closeButton.textContent = 'Close';
-                closeButton.style.marginTop = '20px';
-                closeButton.style.padding = '10px 20px';
-                closeButton.style.backgroundColor = 'var(--primary)';
-                closeButton.style.color = 'white';
-                closeButton.style.border = 'none';
-                closeButton.style.borderRadius = '20px';
-                closeButton.style.fontFamily = 'Comic Sans MS, sans-serif';
-                closeButton.style.fontWeight = 'bold';
-                closeButton.style.cursor = 'pointer';
+                 // Styles applied via CSS
+                // Add event listener to remove the popup when clicked
                 closeButton.addEventListener('click', () => {
                     document.body.removeChild(popupContainer);
                     // Stop the audio when closing
                     if (window.ofAudio) {
                         window.ofAudio.pause();
-                        window.ofAudio.currentTime = 0;
+                        window.ofAudio.currentTime = 0; // Reset audio playback
                     }
                 });
-                
-                // Add all elements to the container
+
+                // Add the title, GIF, and button to the container
                 popupContainer.appendChild(title);
                 popupContainer.appendChild(gifImage);
                 popupContainer.appendChild(closeButton);
-                
-                // Add container to the body
+
+                // Add the popup container to the page body
                 document.body.appendChild(popupContainer);
-                
-                // Play your audio
-                const audio = new Audio('closer_cut.mp3');
-                window.ofAudio = audio; // Store in window object for access from close button
-                audio.volume = 0.5; // Set volume to 50%
-                audio.play().catch(e => console.log('Audio autoplay was prevented:', e));
+
+                 // Attempt to play the "Closer" audio
+                 try {
+                    const audio = new Audio('closer_cut.mp3');
+                    window.ofAudio = audio; // Store reference for pausing later
+                    audio.volume = 0.5; // Set volume
+                    audio.play().catch(e => console.warn('OF audio autoplay prevented:', e));
+                 } catch (e) {
+                     console.error("Could not load or play OF audio:", e);
+                 }
             }
         }
+
     </script>
 </body>
 </html>
