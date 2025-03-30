@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mr. Bear's Official Fan Page 🐻</title>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
         /* CSS Variables for theming */
         :root {
@@ -132,8 +134,8 @@
             transform: rotate(45deg); /* Rotate for paw orientation */
         }
 
-        /* Bear Facts Sections */
-        .bear-facts {
+        /* Bear Facts & General Section Styling */
+        .bear-facts { /* Reused for consistent section styling */
             background-color: white;
             padding: 25px;
             border-radius: 15px;
@@ -142,20 +144,21 @@
             transition: transform 0.3s; /* Smooth hover effect */
         }
 
-        /* Hover effect for bear facts sections */
+        /* Hover effect for sections */
         .bear-facts:hover {
             transform: translateY(-5px); /* Lift section slightly on hover */
         }
 
-        /* Headings within bear facts sections */
+        /* Headings within sections */
         .bear-facts h2 {
             border-bottom: 2px dashed var(--primary); /* Dashed underline */
             padding-bottom: 10px;
             display: flex; /* Align icon and text */
             align-items: center;
+            margin-bottom: 20px; /* Spacing below heading */
         }
 
-        /* Icons within bear facts headings */
+        /* Icons within section headings */
         .bear-facts h2 i {
             margin-right: 10px;
             color: var(--primary);
@@ -256,15 +259,12 @@
             /* Primary color remains the same */
         }
 
-        /* Adjust bear facts background in dark mode */
-        body.dark-mode .bear-facts {
-            background-color: #3d3d3d;
-        }
-         /* Adjust newsletter background in dark mode */
+        /* Adjust section backgrounds in dark mode */
+        body.dark-mode .bear-facts,
         body.dark-mode .newsletter {
             background-color: #3d3d3d;
         }
-         /* Adjust header/footer background in dark mode */
+         /* Adjust header/footer/carousel background in dark mode */
         body.dark-mode header,
         body.dark-mode footer,
         body.dark-mode .quotes-carousel {
@@ -273,6 +273,10 @@
          /* Adjust honey counter text color in dark mode */
         body.dark-mode .honey-counter-text {
             color: var(--secondary); /* Lighter color for better contrast */
+        }
+        /* Adjust story prompt color in dark mode */
+        body.dark-mode .click-prompt {
+            color: var(--secondary);
         }
 
 
@@ -388,6 +392,42 @@
             background-color: #aa8000; /* Darker brown on hover */
             transform: scale(1.1); /* Slightly enlarge on hover */
         }
+
+        /* --- NEW: Story Section Styles --- */
+        .story-cover {
+            cursor: pointer;
+            text-align: center;
+            margin-bottom: 15px; /* Space between cover and content */
+            position: relative; /* For potential future overlays */
+        }
+        .story-cover img {
+            max-width: 100%; /* Ensure image is responsive */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 10px; /* Match section rounding */
+            border: 2px solid var(--primary); /* Subtle border */
+            display: block; /* Prevent extra space below image */
+            margin-left: auto; /* Center image if max-width is less than container */
+            margin-right: auto;
+        }
+        .click-prompt {
+            margin-top: 10px;
+            font-weight: bold;
+            color: var(--primary);
+            transition: color 0.3s; /* Smooth color transition for dark mode */
+        }
+        .click-prompt i {
+             margin-right: 5px; /* Space between icon and text */
+        }
+        .story-content {
+            margin-top: 15px;
+            text-align: left; /* Align story text left */
+            line-height: 1.6; /* Improve readability */
+            /* Uses display:none/block via JS to toggle */
+        }
+        .story-content p {
+            margin-bottom: 1em; /* Standard paragraph spacing */
+        }
+        /* --- END: Story Section Styles --- */
 
         /* Newsletter Signup Section */
         .newsletter {
@@ -726,6 +766,23 @@
             </ul>
         </div>
 
+        <div class="bear-facts story-section">
+            <h2><i class="fas fa-book-open"></i> A Beary Special Story</h2>
+            <div class="story-cover" onclick="toggleStory(this)">
+                <img src="bear_necessities_placeholder_cover.png" alt="Mr. Bear Story Cover" onerror="this.onerror=null; this.src='https://placehold.co/400x200/FFEBC6/4C3A18?text=Story+Cover!';">
+                <p class="click-prompt"><i class="fas fa-hand-pointer"></i> Click to Read the Story</p>
+            </div>
+            <div class="story-content" style="display: none;">
+                <p>Mr. Bear adjusted his tiny, imaginary monocle, peering over the edge of the worn armchair. Below him, the vast expanse of the living room carpet stretched out like a beige savanna. His mission, should he choose to accept it (and he always did when snacks were involved), was to retrieve the elusive final bread butt from the kitchen counter.</p>
+                <p>It wasn't just any bread butt. This was the heel of a particularly fine sourdough, artisanal, probably, left carelessly unattended by the Tall Ones. A prize worthy of a bear of his stature and discerning palate.</p>
+                <p>Operation: Crumb Quest commenced. Phase one involved a stealthy descent from the armchair, a maneuver he’d perfected involving a controlled tumble and a soft landing. He stuck the landing, naturally. Phase two: The perilous journey across the Savanna. He employed the 'low crawl', keeping his fuzzy profile beneath the radar of any potential observers (like the perpetually suspicious cat, Mittens, currently feigning sleep on the ottoman).</p>
+                <p>He navigated past towering table legs, skirted the treacherous void beneath the sofa (a known dust bunny territory), and finally reached the foothills of the Kitchen Mountains. The counter loomed above, a sheer cliff face. But Mr. Bear was prepared. He spotted his climbing gear – a strategically placed dishtowel dangling just within reach.</p>
+                <p>With the determination of a seasoned mountaineer, he began his ascent. Paw over paw, using the nubby texture of the towel for grip, he scaled the vertical challenge. A bead of imaginary sweat trickled down his furry brow. Finally, the summit! And there it was, glistening under the kitchen lights – the sourdough bread butt.</p>
+                <p>Victory! He seized his prize, taking a moment to savor the aroma. But his triumph was short-lived. A shadow fell over him. Mittens, no longer feigning sleep, stood at the edge of the counter, eyes narrowed, tail twitching. A standoff.</p>
+                <p>Mr. Bear knew negotiation was futile. He clutched the bread butt tightly and executed his emergency escape plan: The Countertop Leap of Faith. He launched himself towards the relative safety of a nearby dining chair, landing with a soft *thump* on the cushion. Mittens hissed, foiled again.</p>
+                <p>Back in the safety of his armchair, Mr. Bear enjoyed the spoils of his adventure. The sourdough was, indeed, magnificent. Another successful mission for Somerville's freakiest, and hungriest, bear.</p>
+            </div>
+        </div>
         <div class="newsletter">
             <h2>📫 Join the Bear-y Exclusive Newsletter!</h2>
             <p>Get the latest updates, exclusive bear tips, and secret adventures straight to your inbox!</p>
@@ -1035,6 +1092,39 @@
                  } catch (e) {
                      console.error("Could not load or play OF audio:", e);
                  }
+            }
+        }
+
+        // --- NEW: Story Toggle Function ---
+        /**
+         * Toggles the visibility of the story content associated with the clicked cover.
+         * @param {HTMLElement} coverElement - The element that was clicked (the story-cover div).
+         */
+        function toggleStory(coverElement) {
+            // Find the parent story section container
+            const storySection = coverElement.closest('.story-section');
+            if (!storySection) return; // Exit if the structure is not as expected
+
+            // Find the content and prompt elements within this specific story section
+            const content = storySection.querySelector('.story-content');
+            const prompt = storySection.querySelector('.click-prompt');
+            const promptIcon = prompt.querySelector('i');
+
+            if (!content || !prompt || !promptIcon) return; // Exit if elements are missing
+
+            // Check if the content is currently hidden
+            const isHidden = content.style.display === 'none';
+
+            if (isHidden) {
+                // Show the content
+                content.style.display = 'block';
+                // Update the prompt text and icon
+                prompt.innerHTML = '<i class="fas fa-times-circle"></i> Click to Hide Story';
+            } else {
+                // Hide the content
+                content.style.display = 'none';
+                // Reset the prompt text and icon
+                prompt.innerHTML = '<i class="fas fa-hand-pointer"></i> Click to Read the Story';
             }
         }
 
