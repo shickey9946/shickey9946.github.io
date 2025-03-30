@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mr. Bear's Official Fan Page 🐻</title>
     
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
@@ -393,7 +394,7 @@
             transform: scale(1.1); /* Slightly enlarge on hover */
         }
 
-        /* --- NEW: Story Section Styles --- */
+        /* --- Story Section Styles --- */
         .story-cover {
             cursor: pointer;
             text-align: center;
@@ -401,12 +402,15 @@
             position: relative; /* For potential future overlays */
         }
         .story-cover img {
-            max-width: 100%; /* Ensure image is responsive */
-            height: auto; /* Maintain aspect ratio */
+            /* *** STYLE UPDATE: Limit height and adjust width/fit *** */
+            max-height: 300px; /* Limit the maximum height */
+            width: auto; /* Let width adjust to maintain aspect ratio */
+            max-width: 100%; /* Ensure image doesn't overflow container width */
+            object-fit: cover; /* Cover the area, cropping if necessary */
             border-radius: 10px; /* Match section rounding */
             border: 2px solid var(--primary); /* Subtle border */
             display: block; /* Prevent extra space below image */
-            margin-left: auto; /* Center image if max-width is less than container */
+            margin-left: auto; /* Center image */
             margin-right: auto;
         }
         .click-prompt {
@@ -657,9 +661,13 @@
     </style>
 </head>
 <body>
+    
     <nav>
+        
         <button class="hamburger-menu" onclick="toggleMenu()">
-            <i class="fas fa-bars"></i> </button>
+            <i class="fas fa-bars"></i> 
+        </button>
+        
         <ul id="mobile-menu">
             <li><a href="#" class="active"><i class="fas fa-home"></i> Home</a></li>
             <li><a href="#"><i class="fas fa-book"></i> Bear Blog</a></li>
@@ -670,15 +678,20 @@
         </ul>
     </nav>
 
+    
     <div class="container">
+        
         <header>
             <h1>🐻 Official Mr. Bear Website 🐾</h1>
             <h3>"The Freakiest Bear in Somerville"</h3>
+            
             <div id="paw-prints-container"></div>
         </header>
 
+        
         <div class="honey-counter">
             <p class="honey-counter-text">Love-O-Meter: </p>
+            
             <div class="honey-jar" onclick="increaseHoney(0)">
                 <div class="honey-level" id="honey-0" style="height: 10%"></div>
             </div>
@@ -696,7 +709,9 @@
             </div>
         </div>
 
+        
         <div class="quotes-carousel">
+            
             <div class="quote active">"I don't always drink beer, but when I do, it's Josh and Coors." - Mr. Bear</div>
             <div class="quote">"Behind every successful bear is a trail of stolen bread butts." - Mr. Bear</div>
             <div class="quote">"To nap, or not to nap... that is never the question." - Mr. Bear</div>
@@ -705,27 +720,33 @@
             <div class="quote">"Chris Hansen can catch these paws." - Mr. Bear</div>
             <div class="quote">"I'm not lazy, I'm in energy-saving mode." - Mr. Bear</div>
             <div class="quote">"I'm not a teddy bear, I'm an untamed spirit with a fuzzy exterior." - Mr. Bear</div>
+            
             <div class="controls quote-controls">
                 <button onclick="prevQuote()"><i class="fas fa-chevron-left"></i></button>
                 <button onclick="nextQuote()"><i class="fas fa-chevron-right"></i></button>
             </div>
         </div>
 
+        
         <div class="gallery">
+            
             <div class="gallery-item">
                 <img src="https://shickey9946.github.io/mr_bear_coding.jpg" alt="Mr. Bear coding" onerror="this.onerror=null; this.src='https://placehold.co/300x300/FFEBC6/4C3A18?text=Bear+Coding!';">
                 <div class="gallery-caption">Debugging like a boss</div>
             </div>
+            
             <div class="gallery-item">
                 <img src="https://shickey9946.github.io/mr_bear_chilling.jpg" alt="Mr. Bear sippin on Josh and Coors" onerror="this.onerror=null; this.src='https://placehold.co/300x300/FFEBC6/4C3A18?text=Bear+Chilling!';">
                 <div class="gallery-caption">Friday night vibes</div>
             </div>
+            
             <div class="gallery-item">
                 <img src="https://shickey9946.github.io/mr_bear_sniffing.jpg" alt="Mr. Bear smelling his favorite deodorant" onerror="this.onerror=null; this.src='https://placehold.co/300x300/FFEBC6/4C3A18?text=Bear+Sniffing!';">
                 <div class="gallery-caption">That fresh bear scent</div>
             </div>
         </div>
 
+        
         <div class="bear-facts">
             <h2><i class="fas fa-paw"></i> Bearography</h2>
             <ul>
@@ -741,6 +762,7 @@
             </ul>
         </div>
 
+        
         <div class="bear-facts">
             <h2><i class="fas fa-calendar-day"></i> Daily Activities</h2>
             <p>Mr. Bear's busy schedule includes:</p>
@@ -755,6 +777,7 @@
             </ul>
         </div>
 
+        
         <div class="bear-facts">
             <h2><i class="fas fa-star"></i> Achievements & Awards</h2>
             <ul>
@@ -766,50 +789,84 @@
             </ul>
         </div>
 
-        <div class="bear-facts story-section">
+        
+        
+<div class="bear-facts story-section">
             <h2><i class="fas fa-book-open"></i> A Beary Special Story</h2>
-            <div class="story-cover" onclick="toggleStory(this)">
+            
+            
+<div class="story-cover" onclick="toggleStory(this)">
                 <img src="bear_necessities_placeholder_cover.png" alt="Mr. Bear Story Cover" onerror="this.onerror=null; this.src='https://placehold.co/400x200/FFEBC6/4C3A18?text=Story+Cover!';">
                 <p class="click-prompt"><i class="fas fa-hand-pointer"></i> Click to Read the Story</p>
             </div>
-            <div class="story-content" style="display: none;">
-                <p>Mr. Bear adjusted his tiny, imaginary monocle, peering over the edge of the worn armchair. Below him, the vast expanse of the living room carpet stretched out like a beige savanna. His mission, should he choose to accept it (and he always did when snacks were involved), was to retrieve the elusive final bread butt from the kitchen counter.</p>
-                <p>It wasn't just any bread butt. This was the heel of a particularly fine sourdough, artisanal, probably, left carelessly unattended by the Tall Ones. A prize worthy of a bear of his stature and discerning palate.</p>
-                <p>Operation: Crumb Quest commenced. Phase one involved a stealthy descent from the armchair, a maneuver he’d perfected involving a controlled tumble and a soft landing. He stuck the landing, naturally. Phase two: The perilous journey across the Savanna. He employed the 'low crawl', keeping his fuzzy profile beneath the radar of any potential observers (like the perpetually suspicious cat, Mittens, currently feigning sleep on the ottoman).</p>
-                <p>He navigated past towering table legs, skirted the treacherous void beneath the sofa (a known dust bunny territory), and finally reached the foothills of the Kitchen Mountains. The counter loomed above, a sheer cliff face. But Mr. Bear was prepared. He spotted his climbing gear – a strategically placed dishtowel dangling just within reach.</p>
-                <p>With the determination of a seasoned mountaineer, he began his ascent. Paw over paw, using the nubby texture of the towel for grip, he scaled the vertical challenge. A bead of imaginary sweat trickled down his furry brow. Finally, the summit! And there it was, glistening under the kitchen lights – the sourdough bread butt.</p>
-                <p>Victory! He seized his prize, taking a moment to savor the aroma. But his triumph was short-lived. A shadow fell over him. Mittens, no longer feigning sleep, stood at the edge of the counter, eyes narrowed, tail twitching. A standoff.</p>
-                <p>Mr. Bear knew negotiation was futile. He clutched the bread butt tightly and executed his emergency escape plan: The Countertop Leap of Faith. He launched himself towards the relative safety of a nearby dining chair, landing with a soft *thump* on the cushion. Mittens hissed, foiled again.</p>
-                <p>Back in the safety of his armchair, Mr. Bear enjoyed the spoils of his adventure. The sourdough was, indeed, magnificent. Another successful mission for Somerville's freakiest, and hungriest, bear.</p>
+            
+            
+<div class="story-content" style="display: none;">
+                
+                <p>The Bear Necessities of Overcoming</p>
+                <p>One crisp autumn morning, deep in the Whispering Pines Forest, a rotund brown bear named Mr. Bear awoke with a singular thought, insistent and undeniable: “Today, I shall find the Big Natural Melons”.</p>
+                <p>It wasn't merely hunger, not the common urge for berries or the seasonal pull towards leaping salmon. This was different. This was… an ache . A yearning for something bountiful, robust, and brimming with the sweet nectar of life. An appetite for adventure, certainly, but more pressingly, an appetite for them . Spherical and succulent. He sighed, a sound like boulders shifting. Was this all there was? Foraging, napping, scratching the same old itch on the same old pine? Surely not.</p>
+                <p>Later that day, while investigating the remnants of a hastily abandoned campsite near the forest edge, his snout nudged something unfamiliar lodged in a discarded cooler: a soggy book. Thus Spoke Zarathustra . He gave it an experimental sniff. It smelled faintly of despair, old paper, and something oddly like…potential? Idly batting at the pages with a claw, certain words snagged his bear-brain: Overcome. Create values. Will.</p>
+                <p>Mr. Bear tilted his head. "Over-bear?" he rumbled thoughtfully. An Over-Bear! Yes! A bear not content with the sleepy status quo, who didn’t just follow the migratory patterns of fish. An Over-Bear created his own values! And Mr. Bear's highest value, the peak he yearned to conquer, the very definition of his will made manifest, was currently round, green-striped, and waiting somewhere beyond the trees. "I shall be the Uberbear," he declared to a profoundly confused squirrel, "a creature who forges his own path… preferably to melons".</p>
+                <p>His journey began. He lumbered past the edge of the woods, trying to appear purposeful. Near a dilapidated fence separating the wild from the tamed, he encountered Rocco, a raccoon whose cynicism was as sharp as his claws.</p>
+                <p>“Well, well, if it isn’t Mr. Philosophy,” Rocco sneered, sorting through a discarded bag of artisanal potato chips. “Off chasing fairy tales again? Heard you were asking about melons .” He spat the word out. “You’re wasting your time, furball. Heard about that place, Cambridge Big Naturals? Closed down. Got replaced by a kombucha speakeasy last Tuesday. More margins in fermented tea, apparently”.</p>
+                <p>Mr. Bear merely huffed, striking a pose he hoped looked sufficiently world-weary and determined. The Uberbear does not yield to… fizzy doubt. He forged onward, leaving Rocco to his spoils.</p>
+                <p>The outskirts of Cambridge were a bewildering assault on the senses. Bicycles zipped past like metallic insects. Humans rushed by, faces illuminated by small rectangles. He peered into windows, wrinkling his nose at pastries that lacked the proper… amplitude. He needed natural , perfection sculpted by sun and earth.</p>
+                <p>How does one overcome bearness to achieve Überbearness? he pondered, dodging a skateboarder. Is it merely a matter of diet, or something deeper? Nietzsche wasn't specific about proper nutrition.</p>
+                <p>Then, a scent cut through the urban chaos – faint, yet distinct. A complex bouquet of wheatgrass, self-satisfaction, and beneath it all, the unmistakable, ambrosial promise of ripe melon. Following his nose like a furry guided missile, he navigated the brick sidewalks.</p>
+                <p>And there it was. A beacon of unprocessed hope: Cambridge Big Naturals . The name itself sent a shiver down his spine. Big Naturals! Destiny.</p>
+                <p>Taking a deep breath, he pushed open the door (a polite chime announced his arrival). Inside, shelves groaned under the weight of virtuous consumption. Humans drifted through aisles bathed in the soft glow of recessed lighting. But Mr. Bear’s eyes were drawn to the back. There, under a dedicated spotlight, sat the objects of his quest.</p>
+                <p>These were no ordinary melons. They were enormous, perfectly round, radiating a natural glow that seemed to pulse with life. Cantaloupes like captured sunsets; honeydews whispering secrets of sweetness; and watermelons – oh, the watermelons! – magnificent, their dark green rinds promising crimson perfection within. His eyes widened. "Big natural melons," he whispered, the sound a low rumble of pure epiphany.</p>
+                <p>He approached the display, his heart thumping. He had listened to his innermost desire, rejected the limitations of his species, pursued his own created value. He felt… powerful. The power of the Uberbear actualized.</p>
+                <p>He reached out a tentative claw, gently, reverently stroking the cool rind of the largest watermelon.</p>
+                <p>A gasp went through the nearby shoppers. A young man in hemp trousers dropped his bag of ethically sourced cashews, the nuts scattering across the polished concrete floor.</p>
+                <p>The store manager, an aproned woman with eyes that had seen countless dietary fads come and go, approached cautiously. "Uh, excuse me, sir?" she began, then blinked. "Can I… help you?"</p>
+                <p>Mr. Bear looked at her, then at the melon, then back at her. How to convey the breakthrough? The self-overcoming? The sheer philosophical weight of this moment?</p>
+                <p>He opted for primal truth. He pointed one large claw at the magnificent watermelon, then patted his furry chest with profound dignity. He nudged the melon gently with his snout. Finally, he emitted a low, resonant rumble – a sound that conveyed deep yearning, existential satisfaction, and a polite, yet firm, intention to acquire.</p>
+                <p>The manager stared. The shoppers stared. The ethically sourced cashews stared from the floor.</p>
+                <p>A long moment passed. The manager looked at the bear, then at the watermelon – its weight seemingly significant, much like the weight of existential responsibility. Perhaps it was the absurdity, perhaps the soulful intensity in the bear's eyes, or perhaps she just didn't get paid enough to argue with four hundred pounds of focused ursine will.</p>
+                <p>"Okay," she sighed, grabbing the largest reusable bag available. "Okay. This one… you know what? On the house. Consider it… market research."</p>
+                <p>Mr. Bear dipped his head, a gesture of profound, primal gratitude. Taking the handles carefully in his teeth, he gave one last look around the temple of his triumph, then turned and padded out the door, the chime marking his exit.</p>
+                <p>Later, back in a sun-dappled clearing deep within his woods, Mr. Bear cracked open his prize. The explosion of sweet, watery life was beyond expectation. It tasted like victory. It tasted like the culmination of a quest, yes, but also… like the beginning of something else. As juice matted his fur, he knew the journey of self-improvement was never truly complete. The Uberbear had conquered the melon, but the world held infinite values yet to be created, infinite paths yet to be forged. For now, though, this was enough. This was magnificent.</p>
             </div>
         </div>
-        <div class="newsletter">
+        
+        
+<div class="newsletter">
             <h2>📫 Join the Bear-y Exclusive Newsletter!</h2>
             <p>Get the latest updates, exclusive bear tips, and secret adventures straight to your inbox!</p>
+            
             <form onsubmit="event.preventDefault(); subscribeNewsletter();">
                 <input type="email" placeholder="Your email address" required>
                 <button type="submit"><i class="fas fa-paw"></i> Subscribe</button>
             </form>
+            
             <p id="newsletter-message"></p>
         </div>
 
+        
         <footer>
+            
             <div class="social-links">
                 <a href="#"><i class="fab fa-instagram"></i></a>
                 <a href="#"><i class="fab fa-twitter"></i></a>
                 <a href="#"><i class="fab fa-tiktok"></i></a>
                 <a href="#"><i class="fab fa-youtube"></i></a>
                 <a href="#"><i class="fab fa-twitch"></i></a>
+                
                 <a href="#" onclick="showOnlyFansContent(event)"><i class="fab fa-of"></i> OF</a>
             </div>
+            
             <p>© 2025 Mr. Bear's Fan Club - All cuddles reserved</p>
             <p><small>Disclaimer: Actual beariness may exceed displayed levels</small></p>
             <p><small>No real bears were harmed in the making of this website.</small></p>
         </footer>
     </div>
 
+    
     <div class="mood-toggle" onclick="toggleDarkMode()">
-        <i class="fas fa-moon"></i> </div>
+        <i class="fas fa-moon"></i> 
+    </div>
 
     <script>
         // --- Paw Prints Animation ---
@@ -1095,7 +1152,7 @@
             }
         }
 
-        // --- NEW: Story Toggle Function ---
+        // --- Story Toggle Function ---
         /**
          * Toggles the visibility of the story content associated with the clicked cover.
          * @param {HTMLElement} coverElement - The element that was clicked (the story-cover div).
